@@ -1,4 +1,4 @@
-﻿using DataAccess.Models;
+﻿using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,6 +14,7 @@ namespace Infrastructure.Configurations
             entity.Property(t => t.SecondName).IsRequired().HasMaxLength(50);
             entity.Property(t => t.Email).IsRequired().HasMaxLength(100);
             entity.Property(t => t.Password).IsRequired();
+            entity.Property(t => t.UserGuid).IsRequired();
 
         }
     }
