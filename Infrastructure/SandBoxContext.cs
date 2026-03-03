@@ -1,4 +1,4 @@
-﻿using DataAccess.Models;
+﻿using Domain.Models;
 using Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
