@@ -1,5 +1,7 @@
+using Api.Controllers;
 using Application.Interfaces;
 using Infrastructure;
+using Infrastructure.RabbitMQ;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +23,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<SandBoxContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Application.AssemblyReference).Assembly));
+
+builder.Services.AddSingleton<RabbitMQConnection>();
+builder.Services.AddScoped<RabbitMQProducer>();
+builder.Services.AddSingleton<RabbitMQConsumer>();
+//builder.Services.AddHostedService<RabbitMQConsumerService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
